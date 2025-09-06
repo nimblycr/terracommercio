@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="es-CR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuInmobiliaria | Bienes Raíces en Costa Rica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-primario: #0056b3;
+            --azul-secundario: #007bff;
+            --azul-claro: #e6f2ff;
+            --azul-oscuro: #003d7a;
+            --blanco: #ffffff;
+            --gris-claro: #f8f9fa;
+            --gris-texto: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--blanco);
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--azul-claro);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: var(--azul-primario);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--azul-oscuro);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--azul-secundario);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--azul-secundario);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .btn-contact {
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-contact:hover {
+            background-color: var(--azul-primario);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 61, 122, 0.8)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--blanco);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .search-form {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-form h3 {
+            color: var(--azul-oscuro);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--azul-oscuro);
+            font-weight: 600;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .btn-search {
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .btn-search:hover {
+            background-color: var(--azul-primario);
+        }
+
+        /* Properties Section */
+        .properties {
+            padding: 80px 0;
+            background-color: var(--gris-claro);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            color: var(--azul-oscuro);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--azul-secundario);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-header p {
+            color: var(--gris-texto);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .property-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background-color: var(--blanco);
+            color: var(--azul-oscuro);
+            border: 1px solid var(--azul-secundario);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .property-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .property-card:hover .property-img img {
+            transform: scale(1.1);
+        }
+
+        .property-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .property-info {
+            padding: 20px;
+        }
+
+        .property-price {
+            color: var(--azul-primario);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .property-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--azul-oscuro);
+        }
+
+        .property-location {
+            color: var(--gris-texto);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .property-location i {
+            margin-right: 8px;
+            color: var(--azul-secundario);
+        }
+
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            color: var(--gris-texto);
+        }
+
+        .feature i {
+            margin-right: 5px;
+            color: var(--azul-secundario);
+        }
+
+        .btn-details {
+            display: block;
+            width: 100%;
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-details:hover {
+            background-color: var(--azul-primario);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: var(--azul-claro);
+        }
+
+        .service-icon {
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            color: var(--azul-oscuro);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--gris-texto);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--gris-claro);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: var(--azul-oscuro);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gris-texto);
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--azul-primario);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--gris-claro);
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--azul-claro);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            margin-bottom: 20px;
+            color: var(--gris-texto);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--azul-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gris-texto);
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--gris-claro);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-form h3 {
+            color: var(--azul-oscuro);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--azul-oscuro);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            color: var(--azul-oscuro);
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+
+        .info-icon {
+            background-color: var(--azul-claro);
+            color: var(--azul-secundario);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        .info-text h4 {
+            color: var(--azul-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .info-text p {
+            color: var(--gris-texto);
+        }
+
+        .social-links-contact {
+            margin-top: 30px;
+        }
+
+        .social-links-contact h4 {
+            color: var(--azul-oscuro);
+            margin-bottom: 15px;
+        }
+
+        .social-links-contact a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links-contact a:hover {
+            background-color: var(--azul-primario);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--azul-secundario);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--azul-claro);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .newsletter-form button {
+            background-color: var(--azul-secundario);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--azul-primario);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .properties-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-phone"></i> +506 1234-5678 | 
+                        <i class="fas fa-envelope"></i> info@tuinmobiliaria.cr
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main-header">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/50x50/0056b3/ffffff?text=TI" alt="Logo">
+                    <h1>TuInmobiliaria</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Propiedades</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="btn-contact">Contactar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Encuentra la propiedad de tus sueños en Costa Rica</h2>
+            <p>La mejor selección de propiedades residenciales y comerciales con el servicio profesional que mereces</p>
+            
+            <div class="search-form">
+                <h3>Busca tu propiedad ideal</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="property-type">Tipo de Propiedad</label>
+                            <select id="property-type">
+                                <option value="">Cualquiera</option>
+                                <option value="house">Casa</option>
+                                <option value="apartment">Apartamento</option>
+                                <option value="land">Terreno</option>
+                                <option value="commercial">Comercial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Ubicación</label>
+                            <select id="location">
+                                <option value="">Cualquiera</option>
+                                <option value="san-jose">San José</option>
+                                <option value="alajuela">Alajuela</option>
+                                <option value="cartago">Cartago</option>
+                                <option value="heredia">Heredia</option>
+                                <option value="guanacaste">Guanacaste</option>
+                                <option value="puntarenas">Puntarenas</option>
+                                <option value="limon">Limón</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="min-price">Precio Mínimo</label>
+                            <select id="min-price">
+                                <option value="">Sin mínimo</option>
+                                <option value="50000">$50,000</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="500000">$500,000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="max-price">Precio Máximo</label>
+                            <select id="max-price">
+                                <option value="">Sin máximo</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="500000">$500,000</option>
+                                <option value="1000000">$1,000,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-search">Buscar Propiedades</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2>Propiedades Destacadas</h2>
+                <p>Descubre nuestra selección de propiedades exclusivas en las mejores ubicaciones de Costa Rica</p>
+            </div>
+            
+            <div class="property-filters">
+                <button class="filter-btn active">Todas</button>
+                <button class="filter-btn">Casas</button>
+                <button class="filter-btn">Apartamentos</button>
+                <button class="filter-btn">Terrenos</button>
+                <button class="filter-btn">Comerciales</button>
+            </div>
+            
+            <div class="properties-grid">
+                <!-- Property 1 -->
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Propiedad">
+                        <span class="property-status">En Venta</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$350,000</div>
+                        <h3 class="property-title">Casa Moderna en Escazú</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Escazú, San José
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> 3
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i> 2
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 180m²
+                            </div>
+                        </div>
+                        <a href="#" class="btn-details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Propiedad">
+                        <span class="property-status">En Venta</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$280,000</div>
+                        <h3 class="property-title">Apartamento con Vista al Mar</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Jacó, Puntarenas
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> 2
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i> 2
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 120m²
+                            </div>
+                        </div>
+                        <a href="#" class="btn-details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Propiedad">
+                        <span class="property-status">En Alquiler</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$1,200/mes</div>
+                        <h3 class="property-title">Casa Familiar en Heredia</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Heredia, Heredia
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> 4
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i> 3
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 220m²
+                            </div>
+                        </div>
+                        <a href="#" class="btn-details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <!-- Property 4 -->
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1600607687644-c7171b42468f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Propiedad">
+                        <span class="property-status">En Venta</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$180,000</div>
+                        <h3 class="property-title">Terreno para Construir</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Santa Ana, San José
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 500m²
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-tree"></i> Jardín
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-shield-alt"></i> Seguro
+                            </div>
+                        </div>
+                        <a href="#" class="btn-details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <!-- Property 5 -->
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Propiedad">
+                        <span class="property-status">En Venta</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$450,000</div>
+                        <h3 class="property-title">Villa de Lujo en Guanacaste</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Tamarindo, Guanacaste
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> 5
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bath"></i> 4
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 350m²
+                            </div>
+                        </div>
+                        <a href="#" class="btn-details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <!-- Property 6 -->
+                <div class="property-card">
+                    <div class="property-img">
+                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Propiedad">
+                        <span class="property-status">En Alquiler</span>
+                    </div>
+                    <div class="property-info">
+                        <div class="property-price">$2,500/mes</div>
+                        <h3 class="property-title">Oficina en Centro Financiero</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Sabana, San José
+                        </div>
+                        <div class="property-features">
+                            <div class="feature">
+                                <i class="fas fa-building"></i> 3 Pisos
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-ruler-combined"></i> 450m²
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-parking"></i> 10 Parqueos
+                            </div>
+                        </div>
+                        <a href="#" class="btn-details">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos soluciones integrales para todas tus necesidades inmobiliarias</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Compra y Venta</h3>
+                    <p>Asesoramiento experto para comprar o vender tu propiedad con el mejor valor del mercado.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Alquiler y Administración</h3>
+                    <p>Gestión completa de propiedades en alquiler, desde la búsqueda de inquilinos hasta el mantenimiento.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Tasaciones</h3>
+                    <p>Valoraciones profesionales de propiedades con metodologías reconocidas internacionalmente.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Asesoría Legal</h3>
+                    <p>Acompañamiento legal en todas las etapas de la transacción inmobiliaria para garantizar seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre TuInmobiliaria</h2>
+                    <p>Con más de 15 años de experiencia en el mercado costarricense, TuInmobiliaria se ha consolidado como una de las empresas líderes en el sector de bienes raíces.</p>
+                    <p>Nuestro equipo de profesionales altamente capacitados está comprometido con ofrecer un servicio personalizado y transparente, asegurando que cada cliente encuentre la propiedad ideal que se ajuste a sus necesidades y presupuesto.</p>
+                    <p>Trabajamos con ética, profesionalismo y pasión, convirtiendo cada transacción en una experiencia positiva y exitosa.</p>
+                    <a href="#" class="btn-primary">Conoce Más Sobre Nosotros</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Sobre Nosotros">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Testimonios de Clientes</h2>
+                <p>Lo que nuestros clientes dicen sobre nosotros</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Gracias al equipo de TuInmobiliaria pude vender mi casa en solo 3 semanas. Su asesoramiento fue invaluable y lograron un precio excelente."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria González</h4>
+                            <p>Vendedora, Escazú</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Como inversor extranjero, necesitaba una empresa que me guiara en el proceso de compra en Costa Rica. TuInmobiliaria superó todas mis expectativas."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+                        </div>
+                        <div class="author-info">
+                            <h4>Robert Johnson</h4>
+                            <p>Inversionista, Estados Unidos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Contraté sus servicios de administración de propiedades y ha sido la mejor decisión. Mi apartamento siempre está ocupado y con excelentes inquilinos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente">
+                        </div>
+                        <div class="author-info">
+                            <h4>Laura Fernández</h4>
+                            <p>Propietaria, Heredia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contacto</h2>
+                <p>Estamos aquí para ayudarte a encontrar la propiedad perfecta</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-search">Enviar Mensaje</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Dirección</h4>
+                            <p>Centro Corporativo Sabana, Edificio 3, Piso 5<br>San José, Costa Rica</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Teléfono</h4>
+                            <p>+506 1234-5678<br>+506 2234-5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Correo Electrónico</h4>
+                            <p>info@tuinmobiliaria.cr<br>ventas@tuinmobiliaria.cr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Horario de Atención</h4>
+                            <p>Lunes a Viernes: 8:00am - 6:00pm<br>Sábados: 9:00am - 1:00pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links-contact">
+                        <h4>Síguenos en Redes Sociales</h4>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TuInmobiliaria</h3>
+                    <p>Líderes en el mercado de bienes raíces en Costa Rica, ofreciendo soluciones integrales y personalizadas.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Propiedades</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tipos de Propiedades</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Casas</a></li>
+                        <li><a href="#">Apartamentos</a></li>
+                        <li><a href="#">Terrenos</a></li>
+                        <li><a href="#">Oficinas</a></li>
+                        <li><a href="#">Locales Comerciales</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Suscríbete</h3>
+                    <p>Recibe las últimas propiedades y ofertas en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 TuInmobiliaria. Todos los derechos reservados. | <a href="#" style="color: #aaa;">Política de Privacidad</a> | <a href="#" style="color: #aaa;">Términos y Condiciones</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Property Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const propertyCards = document.querySelectorAll('.property-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.textContent.toLowerCase();
+                    
+                    propertyCards.forEach(card => {
+                        if (filter === 'todas') {
+                            card.style.display = 'block';
+                        } else {
+                            // This is a simplified filter - in a real app, you would check property data
+                            // For demo purposes, we'll just show/hide randomly
+                            if (Math.random() > 0.5) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Form submission handling
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // In a real app, you would submit the form data to a server
+                    // For demo purposes, we'll just show an alert
+                    alert('Gracias por tu mensaje. Te contactaremos pronto.');
+                    form.reset();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
